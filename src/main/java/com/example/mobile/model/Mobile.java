@@ -4,34 +4,40 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "phones")
 public class Mobile {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int serialNumber;
-    private String modelName;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int serial;
+    private String model;
 
-    public Mobile(String modelName) {
-        this.modelName = modelName;
+    public Mobile(){
+    }
+
+    public Mobile(String model, int serial){
+        this.model =model;
+        this.serial = serial;
+    }
+
+    public Mobile(String model) {
+        this.model = model;
     }
 
     public int getSerialNumber() {
-        return serialNumber;
+        return serial;
     }
 
-    public void setSerialNumber(int serialNumber) {
-        this.serialNumber = serialNumber;
+    public void setSerialNumber(int serial) {
+        this.serial = serial;
     }
 
     public String getModelName() {
-        return modelName;
+        return model;
     }
 
-    public void setModelName(String modelName) {
-        this.modelName = modelName;
+    public void setModelName(String model) {
+        this.model = model;
     }
 }
