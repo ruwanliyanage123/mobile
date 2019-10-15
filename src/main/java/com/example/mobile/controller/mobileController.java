@@ -3,6 +3,7 @@ package com.example.mobile.controller;
 import com.example.mobile.jpa.MobileRepository;
 import com.example.mobile.model.Mobile;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,4 +28,11 @@ public class mobileController {
     public void addList(@RequestBody Mobile mobile){
         mobileRepository.save(mobile);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteList(@PathVariable String id){
+        int serial = Integer.parseInt(id);
+        mobileRepository.deleteById(serial);
+    }
+
 }
